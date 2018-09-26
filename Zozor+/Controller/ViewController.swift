@@ -11,7 +11,7 @@ protocol Alerts {
 }
 
 class ViewController: UIViewController {
-
+// viewTest
 	
 	// MARK: - Outlets
 	@IBOutlet weak var textView: UITextView!
