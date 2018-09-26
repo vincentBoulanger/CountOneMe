@@ -1,8 +1,8 @@
 //
 //  Operation.swift
 
-import UIKit
-class Operations {
+import Foundation
+class Operations: ViewController {
 
 	var stringNumbers: [String] = [String()]
 	var operators: [String] = ["+"]
@@ -36,7 +36,9 @@ class Operations {
 				text += operators[i]
 			}
 			// Add number
+			print("\(text)")
 			text += stringNumber
+			
 		}
 		
 //		myTextView(text: text)
@@ -52,13 +54,12 @@ class Operations {
 		if let stringNumber = stringNumbers.last {
 			if stringNumber.isEmpty {
 				if stringNumbers.count == 1 {
-					alertNewCalcul(alert: .init(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert), alertAction: .init(title: "Ok", style: .cancel, handler: nil))
-
+					
 					//	                    let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
 					//	                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 					//	                    self.present(alertVC, animated: true, completion: nil)
 				} else {
-					alertExpressionCorrect(alert: .init(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert), alertAction: .init(title: "Zéro !", style: .cancel, handler: nil) )
+					
 					//	                    let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
 					//	                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 					//self.present(alertVC, animated: true, completion: nil)
@@ -71,10 +72,11 @@ class Operations {
 	var canAddOperator: Bool {
 		if let stringNumber = stringNumbers.last {
 			if stringNumber.isEmpty {
-				alertIncorrectExpression(alert: .init(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert), alertAction: .init(title: "Ok", style: .cancel, handler: nil))
-				
+				//alertDelegate.alertExpressionCorrect
 				//present(self, animated: true, completion: nil)
-//				let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert)
+				let alertVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+				alertVC.alertDelegate = self
+					present(alertVC, animated: true, completion: nil) as! Alerts
 //				alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 			//	self.present(alertVC, animated: true, completion: nil)
 				return false
@@ -95,27 +97,6 @@ class Operations {
 			operators.append("-")
 			stringNumbers.append("")
 		}
-	}
-}
-
-extension Operations: myAlerts {
-	func myTextView(text: UITextView) {
-		print("myTextView")
-	}
-
-	func alertNewCalcul(alert: UIAlertController, alertAction: UIAlertAction) {
-		print("myAlertNewCalcul")
-		//self.present(alert, animated: true, completion: nil)
-	}
-	
-	func alertExpressionCorrect(alert: UIAlertController, alertAction: UIAlertAction) {
-		print("myAlertExpressionCorrect")
-
-	}
-	
-	func alertIncorrectExpression(alert: UIAlertController, alertAction: UIAlertAction) {
-		print("myAlertIncorrectExpression")
-		
 	}
 
 }
