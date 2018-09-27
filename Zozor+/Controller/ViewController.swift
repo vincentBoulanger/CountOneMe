@@ -3,7 +3,7 @@
 //test 32
 
 import UIKit
-protocol Alerts {
+protocol AlertsDelegateProtocol {
 	func alertNewCalcul(alert:UIAlertController, alertAction:UIAlertAction)
 	func alertExpressionCorrect(alert: UIAlertController, alertAction: UIAlertAction)
 	func alertIncorrectExpression(alert: UIAlertController, alertAction: UIAlertAction)
@@ -11,17 +11,15 @@ protocol Alerts {
 }
 
 class ViewController: UIViewController {
-// viewTest
-	
+	// viewTest
 	// MARK: - Outlets
 	@IBOutlet weak var textView: UITextView!
 	@IBOutlet var numberButtons: [UIButton]!
 	let operations = Operations()
     // MARK: - Properties
-	var alertDelegate: Alerts! // delegateur
+	var alertDelegate: AlertsDelegateProtocol! // delegateur
 
     // MARK: - Action
-
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (i, numberButton) in numberButtons.enumerated() {
             if sender == numberButton {
@@ -32,6 +30,7 @@ class ViewController: UIViewController {
     @IBAction func plus() {
 		operations.addButton()
 		operations.updateDisplay()
+		//alertDelegate.alertExpressionCorrect(alert, alertAction: <#T##UIAlertAction#>)
     }
 
     @IBAction func minus() {
@@ -53,32 +52,12 @@ class ViewController: UIViewController {
 			//alertExpressionCorrect(alert:  , alertAction: )
         }
         operations.updateDisplay()
+		
     }
-
-}
-extension ViewController: Alerts {
+	override func viewDidLoad() {
+		super.viewDidLoad()
 	
-	func myTextView(text: UITextView) {
-		print("myTextView ")
 	}
-
-	func alertNewCalcul(alert: UIAlertController, alertAction: UIAlertAction) {
-		print("myAlertNewCalcul")
-		//self.present(alert, animated: true, completion: nil)
-		alertDelegate.alertNewCalcul(alert: .init(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert), alertAction: .init(title: "Ok", style: .cancel, handler: nil))
-		dismiss(animated: true, completion: nil)
-	}
-
-	func alertExpressionCorrect(alert: UIAlertController, alertAction: UIAlertAction) {
-		print("myAlertExpressionCorrect")
-		alertDelegate.alertExpressionCorrect(alert: .init(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert), alertAction: .init(title: "Zéro !", style: .cancel, handler: nil) )
-		dismiss(animated: true, completion: nil)
-	}
-
-	func alertIncorrectExpression(alert: UIAlertController, alertAction: UIAlertAction) {
-		print("myAlertIncorrectExpression")
-		alertDelegate.alertExpressionCorrect(alert: .init(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert), alertAction: .init(title: "Ok", style: .cancel, handler: nil))
-		dismiss(animated: true, completion: nil)
-	}
-	
 }
+
+
