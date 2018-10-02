@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF8A480B2150F03900451B93 /* CountOnMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A480A2150F03900451B93 /* CountOnMeTests.swift */; };
+		BFAC00AB21638B8D00EF38E0 /* OperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC00AA21638B8D00EF38E0 /* OperationsTests.swift */; };
 		BFC3BF6E214FEF930022FD69 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3BF6D214FEF930022FD69 /* Operations.swift */; };
 		C926DADD1D7581BB00477020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926DADC1D7581BB00477020 /* AppDelegate.swift */; };
 		C926DADF1D7581BB00477020 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926DADE1D7581BB00477020 /* ViewController.swift */; };
@@ -28,8 +28,8 @@
 
 /* Begin PBXFileReference section */
 		BF8A48082150F03900451B93 /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF8A480A2150F03900451B93 /* CountOnMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeTests.swift; sourceTree = "<group>"; };
 		BF8A480C2150F03900451B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFAC00AA21638B8D00EF38E0 /* OperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTests.swift; sourceTree = "<group>"; };
 		BFC3BF6D214FEF930022FD69 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Operations.swift; path = "Zozor+/Model/Operations.swift"; sourceTree = SOURCE_ROOT; };
 		C926DAD91D7581BB00477020 /* CountOnMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountOnMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C926DADC1D7581BB00477020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		BF8A48092150F03900451B93 /* CountOnMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF8A480A2150F03900451B93 /* CountOnMeTests.swift */,
+				BFAC00AA21638B8D00EF38E0 /* OperationsTests.swift */,
 				BF8A480C2150F03900451B93 /* Info.plist */,
 			);
 			path = CountOnMeTests;
@@ -114,11 +114,11 @@
 			isa = PBXGroup;
 			children = (
 				C926DADC1D7581BB00477020 /* AppDelegate.swift */,
+				C926DAE31D7581BB00477020 /* Assets.xcassets */,
+				C926DAE81D7581BB00477020 /* Info.plist */,
 				BFC3BF6A214FEE140022FD69 /* Model */,
 				BFC3BF6B214FEE170022FD69 /* View */,
 				BFC3BF6C214FEE1B0022FD69 /* Controller */,
-				C926DAE31D7581BB00477020 /* Assets.xcassets */,
-				C926DAE81D7581BB00477020 /* Info.plist */,
 			);
 			name = CountOnMe;
 			path = "Zozor+";
@@ -228,7 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8A480B2150F03900451B93 /* CountOnMeTests.swift in Sources */,
+				BFAC00AB21638B8D00EF38E0 /* OperationsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

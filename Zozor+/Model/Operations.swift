@@ -11,7 +11,6 @@ class Operations {
 	var stringNumbers: [String] = [String()]
 	var operators: [String] = ["+"]
 	var alertDelegateProtocol : AlertsDelegateProtocol?// 2. initialisation du protocol
-	var testVar:String = ""
 	
 	var isExpressionCorrect: Bool {
 		if let stringNumber = stringNumbers.last {
@@ -36,24 +35,24 @@ class Operations {
 		return true
 	}
 	func calculateTotal() -> String {
-		var totalToString = ""
 		var total = 0
+		var totalToString = ""
 		if !isExpressionCorrect {
 			return totalToString
 		}
-			for (i, stringNumber) in stringNumbers.enumerated() {
-				if let number = Int(stringNumber) {
-					if operators[i] == "+" {
-						total += number
-						print("total1: \(total)")
-						totalToString = String(total)
-					} else if operators[i] == "-" {
-						total -= number
-						print("total2: \(total)")
-						totalToString = String(total)
-					}
+		for (i, stringNumber) in stringNumbers.enumerated() {
+			if let number = Int(stringNumber) {
+				if operators[i] == "+" {
+					total += number
+					print("total1: \(total)")
+					totalToString = String(total)
+				} else if operators[i] == "-" {
+					total -= number
+					print("total2: \(total)")
+					totalToString = String(total)
 				}
 			}
+		}
 		return totalToString
 	}
 	func addNewNumber(_ newNumber: Int)  -> String {

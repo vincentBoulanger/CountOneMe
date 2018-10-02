@@ -35,8 +35,7 @@ class ViewController: UIViewController {
 			case "=":
 				print("calculateTotal in ViewController")
 				textView.text = operations.calculateTotal()
-				//textView.text = operations.updateDisplay()
-				 operations.clear()
+				operations.clear()
 			default:
 				break
 		}
