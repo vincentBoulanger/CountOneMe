@@ -4,7 +4,6 @@
 
 import UIKit
 
-
 class ViewController: UIViewController {
 	// viewTest
 	// MARK: - Outlets
@@ -18,40 +17,36 @@ class ViewController: UIViewController {
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (i, numberButton) in numberButtons.enumerated() {
             if sender == numberButton {
-                operations.addNewNumber(i)
+             textView.text = operations.addNewNumber(i)
+				textView.text = operations.updateDisplay()
             }
         }
     }
-//    @IBAction func plus() { // plus Action
-//		operations.addButton()
-//    }
-//
-//    @IBAction func minus() {// minusAction
-//		operations.minusButton()
-//    }
-//
-//    @IBAction func equal() {
-//        operations.calculateTotal()
-//    }
 	@IBAction func operationButtonTapped(_ sender: UIButton) {
 		switch sender.title(for: .normal) {
-		case "+":
-			operations.addButton()
-		case "-":
-			operations.minusButton()
-		case "=":
-			operations.calculateTotal()
-		default:
-			break
+			case "+":
+				print("addButton in ViewController")
+				textView.text = operations.plusActionButton()
+				textView.text = operations.updateDisplay()
+			case "-":
+				print("minusButton in ViewController")
+				textView.text = operations.minusActionButton()
+				textView.text = operations.updateDisplay()
+			case "=":
+				print("calculateTotal in ViewController")
+				textView.text = operations.calculateTotal()
+				//textView.text = operations.updateDisplay()
+				 operations.clear()
+			default:
+				break
 		}
 	}
-	
+
     // MARK: - Methods
-
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		operations.alertDelegateProtocol = self
+		operations.alertDelegateProtocol = self // 4 implementation du protocol au sein de la classe dans laquelle on a écrit la ligne. On vient de delguer au controleur
+		
 	}
 }
 
