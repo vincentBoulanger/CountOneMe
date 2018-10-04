@@ -27,11 +27,15 @@ class ViewController: UIViewController {
 			case "+":
 				print("addButton in ViewController")
 				textView.text = operations.plusActionButton()
-				textView.text = operations.updateDisplay()
 			case "-":
 				print("minusButton in ViewController")
 				textView.text = operations.minusActionButton()
-				textView.text = operations.updateDisplay()
+			case "x":
+				print("multiplyButton in ViewController")
+				textView.text = operations.multiplyActionButton()
+			case "/":
+				print("divideButton in ViewController")
+				textView.text = operations.divideActionButton()
 			case "=":
 				print("calculateTotal in ViewController")
 				textView.text = operations.calculateTotal()

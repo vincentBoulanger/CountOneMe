@@ -31,80 +31,150 @@ class OperationsTests: XCTestCase {
 		super.setUp()
 		operations = Operations()
 	}
-	func testAlertProtocolDelegate() {
-		XCTAssert(2*2 == 4)
-		XCTAssert(true || false)
-//		XCTAssert(true && false)
-//		XCTAssert(365%7 == 0)
-		XCTAssert([1, 2, 3, 4].count == [5, 6, 7, 8].count)
-		
-	}
-	func testIsExpressionCorrect() {
 
-//			if operations.stringNumbers.count == 1 {
-//
-//
-//			} else {
-//				XCTAssertEqual(operations.calculateTotal()
-//
-//				operations.alertDelegateProtocol?.displayAlert(title: "Zéro!", message: "Entrez une expression correcte !")
-//			}
+	
+	/////////////////////////////
+	// - MARK: stringNumbers
+	/////////////////////////////
+	/////////////////////////////
+	// - MARK: operators
+	/////////////////////////////
+	// assuretoi que operators n'est pas vide WHEN operators est une chaine de strin Then alors operators = +
+	func testGivenOperatorsIsPlusString_WhenOperatorsIsInitialisate_ThenOperatorsIsPlusString() {
+	
+	
+		// ETANT DONNÉ QUE le poste n'a pas de like
+		// QUAND le poste est liké
+		operations.operators = ["+"]
+		// ALORS le poste a un like
+		XCTAssert(operations.operators == ["+"])
+	}
+	/////////////////////////////
+	// - MARK: isExpressionCorrect
+	/////////////////////////////
 
+	/////////////////////////////
+	// - MARK: canAddOperator
+	/////////////////////////////
+	
+	/////////////////////////////
+	// - MARK: calculateTotal
+	/////////////////////////////
+
+	func testGivenVarTotalToStringIsEmptyString_WhenIsExpressionIsCorrect_ThenTotalToStringisEmpty() {
+		// ETANT DONNÉ QUE
+		// QUAND
+			operations.stringNumbers = ["5", "2"]
+			operations.operators = ["+","-"]
+		// ALORS
+			XCTAssert(operations.calculateTotal() == "3")
+		
+	}
+	func testGivenTwoNumbersWithMinusOperand_WhenEqualButtonIspressed_ThenResultIsTheDifference() {
+		// ETANT DONNÉ QUE
+		// QUAND
+//		operations.stringNumbers = ["5", "2"]
+//		operations.operators = ["+","+"]
+		let _ = operations.addNewNumber(5)
+		let _ = operations.minusActionButton()
+		let _ = operations.addNewNumber(2)
+		
+		// ALORS
+		XCTAssert(operations.calculateTotal() == "3")
+		
+	}
+	func testGivenTwoNumbersWithPlusOperand_WhenEqualButtonIspressed_ThenResultIsTheAddition() {
+		// ETANT DONNÉ QUE
+		// QUAND
+		let _ = operations.addNewNumber(2)
+		let _ = operations.plusActionButton()
+		let _ = operations.addNewNumber(2)
+		XCTAssert(operations.calculateTotal() == "4")
+	}
+	func testGivenTwoNumbersWithMultiplyOperand_WhenEqualButtonIspressed_ThenResultIsTheMultiplication() {
+		// ETANT DONNÉ QUE
+		// QUAND
+		let _ = operations.addNewNumber(2)
+		let _ = operations.multiplyActionButton()
+		let _ = operations.addNewNumber(3)
+		XCTAssert(operations.calculateTotal() == "6")
+	}
+	func testGivenTwoNumbersWithDivideOperand_WhenEqualButtonIspressed_ThenResulIsTheDivision() {
+		// ETANT DONNÉ QUE
+		// QUAND
+		let _ = operations.addNewNumber(2)
+		let _ = operations.divideActionButton()
+		let _ = operations.addNewNumber(2)
+		XCTAssert(operations.calculateTotal() == "0")
 	}
 
-	func testCanAddOperator() {
-		
-	}
-	func testCalculateTotal() {
-		
-	}
-	func testAddNumber() {
-		//operations.plusActionButton() == "+"
-		
-	}
-	func testUpdateDisplay() {
-		//XCT
-	}
-	func testClear() {
-//		if operations.stringNumbers != operations.stringNumbers.removeAll() {
-//
+	func testGiventotalToStringIsEmpty_WhenIsNoCorrect_ThenTotalToStringIsAlwaysEmpty() {
+//		if operations.isExpressionCorrect []
+//			XCTAssert(operations.calculateTotal() == "")
 //		}
-	}
-	func testPlusActionButton() {
-		if operations.canAddOperator == true {
-			XCTAssert(operations.plusActionButton() == "")
-		} else {
-			XCTAssert(operations.plusActionButton() == "")
-		}
-		
 		
 	}
-	func testMinusActionButton() {
-		if operations.canAddOperator == true {
-			XCTAssert(operations.plusActionButton() == "-")
-		} else {
-			XCTAssert(operations.plusActionButton() == "")
-		}
+	func testGivenStringNumbersisEmpty_WhenIsExpressionIsCorrect_ThenIsExpressionIsRefused() {
+		operations.stringNumbers = [""]
+		XCTAssert(operations.isExpressionCorrect == false)
+	}
+	func testGivenStringNumbersHasOneElement_WhenIsExpressionIsCorrect_ThenIsExpressionisRefused() {
+		operations.stringNumbers = ["0"]
+		XCTAssert(operations.isExpressionCorrect == true)
+	}
+
+	/////////////////////////////
+	// - MARK: PlusButtonTest
+	/////////////////////////////
+	func testGivenplusActionButtonisClicked_WhenYouClickOnPlusActionButton_ThenOperandsIsPlus() {
+		operations.stringNumbers = ["1"]
+		XCTAssert(operations.canAddOperator == true)
+		XCTAssert(operations.plusActionButton() == "+")
+		
 	}
 	
-//    override func setUp() {
-//        // Put setup code here. This method is called before the invocation of each test method in the class.
-//    }
-//
-//    override func tearDown() {
-//        // Put teardown code here. This method is called after the invocation of each test method in the class.
-//    }
-//
-//    func testExample() {
-//        // This is an example of a functional test case.
-//        // Use XCTAssert and related functions to verify your tests produce the correct results.
-//    }
-//
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
+	func testGivenMinusActionButtonIsClicked_WhenYouClickOnMinusActionButton_ThenOperandsIsMinus() {
+		operations.stringNumbers = ["1"]
+		XCTAssert(operations.canAddOperator == true)
+		XCTAssert(operations.minusActionButton() == "-")
+		
+	}
+	
+	/////////////////////////////
+	// - MARK: clear
+	/////////////////////////////
+	func testGivenResultIsDisplayed_WhenClearIsPressed_ThenResetData () {
+		operations.stringNumbers = ["3", "2"]
+		operations.operators = ["+", "-"]
+		operations.clear()
+		XCTAssert(operations.stringNumbers == [String()])
+		XCTAssert(operations.operators == ["+"])
+		
+	}
+	/////////////////////////////
+	// - MARK: updateDisplay
+	/////////////////////////////
+	func testGivenStringNumberIsLaunched_WhenStringNumbersIsDetermine_ThenStringNumbersIsDisplayed() {
+		// ETANT DONNÉ QUE
+		// QUAND
+		operations.stringNumbers = ["0"]
+		//operations.operators = ["+"]
+		// ALORS
+		XCTAssert(operations.updateDisplay() == "0")
+	}
+	func testGivenOperatorsIsLaunched_WhenOperatorsIsDetermine_ThenOperatorsIsDisplayed() { // test updateDisplay
+		// ETANT DONNÉ QUE
+		// QUAND
 
+		operations.operators = [""]
+		// ALORS
+		XCTAssert(operations.updateDisplay() == "")
+	}
+	func testGivenStringNumbersHasAValue_WhenNumbersArePressed_ThenStringNumbersAppendNewNumber() {
+		operations.stringNumbers = ["1"]
+		operations.addNewNumber(1)
+		XCTAssert(operations.stringNumbers == ["11"])
+		
+	}
 }
+

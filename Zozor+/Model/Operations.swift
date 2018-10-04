@@ -44,11 +44,15 @@ class Operations {
 			if let number = Int(stringNumber) {
 				if operators[i] == "+" {
 					total += number
-					print("total1: \(total)")
 					totalToString = String(total)
 				} else if operators[i] == "-" {
 					total -= number
-					print("total2: \(total)")
+					totalToString = String(total)
+				} else if operators[i] == "*" {
+					total *= number
+					totalToString = String(total)
+				} else if operators[i] == "/" {
+					total /= number
 					totalToString = String(total)
 				}
 			}
@@ -71,35 +75,45 @@ class Operations {
 				text += operators[i]
 			}
 			// Add number
-			print("\(text)")
 			text += stringNumber
 		}
 		return text
 	}
 	
-	func clear() {
+	func clear(){
 		stringNumbers = [String()]
 		operators = ["+"]
 	}
 	
 	func plusActionButton() -> String {
-		var plus = ""
 		if canAddOperator {
 			operators.append("+")
 			stringNumbers.append("")
-			plus = "+"
 		}
-		return plus
+		return updateDisplay()
 	}
 	
 	func minusActionButton() -> String {
-		var minus = ""
 		if canAddOperator {
 			operators.append("-")
 			stringNumbers.append("")
-			minus = "-"
 		}
-		return minus
+		return updateDisplay()
+	}
+	
+	func multiplyActionButton() -> String {
+		if canAddOperator {
+			operators.append("*")
+			stringNumbers.append("")
+		}
+		return updateDisplay()
+	}
+	func divideActionButton() -> String {
+		if canAddOperator {
+			operators.append("/")
+			stringNumbers.append("")
+		}
+		return updateDisplay()
 	}
 }
 
