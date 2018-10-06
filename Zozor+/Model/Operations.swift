@@ -12,6 +12,10 @@ class Operations {
 	var operators: [String] = ["+"]
 	var alertDelegateProtocol : AlertsDelegateProtocol?// 2. initialisation du protocol
 	
+	func priorityCalcul() -> Bool {
+		
+		return true
+	}
 	var isExpressionCorrect: Bool {
 		if let stringNumber = stringNumbers.last {
 			if stringNumber.isEmpty {
@@ -34,9 +38,30 @@ class Operations {
 		}
 		return true
 	}
+	var divisionByZero: Bool {
+		if stringNumbers.last != nil{
+			if operators.last == "/" {
+				if stringNumbers.last == "0" {
+					alertDelegateProtocol?.displayAlert(title: "Erreur", message: "La division par zéro est impossible.")
+					return false
+				}
+			}
+		}
+		return true
+	}
+//	var resultDivisionWithFloat: Bool {
+//		if stringNumbers.last != nil{
+//			if operators. == "/" {
+//				return true
+//			}
+//		}
+//		return false
+//	}
 	func calculateTotal() -> String {
 		var total = 0
 		var totalToString = ""
+		var totalToStringWithFloat:Double = 0.0
+		var numberToFloatNumber:Double = 0.0
 		if !isExpressionCorrect {
 			return totalToString
 		}
@@ -44,21 +69,32 @@ class Operations {
 			if let number = Int(stringNumber) {
 				if operators[i] == "+" {
 					total += number
-					totalToString = String(total)
+					//totalToString = String(total)
 				} else if operators[i] == "-" {
 					total -= number
-					totalToString = String(total)
+					//totalToString = String(total)
 				} else if operators[i] == "*" {
 					total *= number
-					totalToString = String(total)
+					//totalToString = String(total)
 				} else if operators[i] == "/" {
-					total /= number
-					totalToString = String(total)
+					if divisionByZero == true {
+						totalToStringWithFloat = Double(total)
+						numberToFloatNumber = Double(number)
+						totalToStringWithFloat /= numberToFloatNumber
+						total /= number
+						totalToString = String(format: "%.2f", totalToStringWithFloat)
+						
+						return totalToString
+					}
+					
 				}
+				totalToString = String(total)
 			}
 		}
+		
 		return totalToString
 	}
+	
 	func addNewNumber(_ newNumber: Int)  -> String {
 		if let stringNumber = stringNumbers.last {
 			var stringNumberMutable = stringNumber
