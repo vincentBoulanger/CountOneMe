@@ -12,10 +12,6 @@ class Operations {
 	var operators: [String] = ["+"]
 	var alertDelegateProtocol : AlertsDelegateProtocol?// 2. initialisation du protocol
 	
-	func priorityCalcul() -> Bool {
-		
-		return true
-	}
 	var isExpressionCorrect: Bool {
 		if let stringNumber = stringNumbers.last {
 			if stringNumber.isEmpty {
@@ -38,61 +34,118 @@ class Operations {
 		}
 		return true
 	}
-	var divisionByZero: Bool {
-		if stringNumbers.last != nil{
-			if operators.last == "/" {
-				if stringNumbers.last == "0" {
-					alertDelegateProtocol?.displayAlert(title: "Erreur", message: "La division par zéro est impossible.")
-					return false
-				}
-			}
-		}
-		return true
-	}
-//	var resultDivisionWithFloat: Bool {
+//	var divisionByZero: Bool {
 //		if stringNumbers.last != nil{
-//			if operators. == "/" {
-//				return true
+//			if operators.last == "/" {
+//				if stringNumbers.last == "0" {
+//					alertDelegateProtocol?.displayAlert(title: "Erreur", message: "La division par zéro est impossible.")
+//					return false
+//				}
 //			}
 //		}
-//		return false
+//		return true
 //	}
-	func calculateTotal() -> String {
-		var total = 0
-		var totalToString = ""
-		var totalToStringWithFloat:Double = 0.0
-		var numberToFloatNumber:Double = 0.0
-		if !isExpressionCorrect {
-			return totalToString
-		}
-		for (i, stringNumber) in stringNumbers.enumerated() {
-			if let number = Int(stringNumber) {
-				if operators[i] == "+" {
-					total += number
-					//totalToString = String(total)
-				} else if operators[i] == "-" {
-					total -= number
-					//totalToString = String(total)
-				} else if operators[i] == "*" {
-					total *= number
-					//totalToString = String(total)
-				} else if operators[i] == "/" {
-					if divisionByZero == true {
-						totalToStringWithFloat = Double(total)
-						numberToFloatNumber = Double(number)
-						totalToStringWithFloat /= numberToFloatNumber
-						total /= number
-						totalToString = String(format: "%.2f", totalToStringWithFloat)
-						
-						return totalToString
+	
+//	var priorityCalculMultiply: Bool {
+//		var numbersMultiply = [String]()
+//		var numberAfter = ""
+////		var numberBefore = ""
+////		if stringNumbers.last != nil {
+//			//	var test = operators.index(after: -1)
+//				for i in 0..<operators.count {
+//					let indexOperators = operators[i]
+//					if indexOperators == "*"  {
+//						for i in 0..<stringNumbers.count {
+//							let numbersPriority = stringNumbers[i]
+//							//var numbersPriorityToInt =
+//							if Int(numbersPriority) != nil {
+//								//if numbersPriorityToInt! >= 1 {
+//								//let myTest = stringNumbers[i-1]
+//								var numberBefore = stringNumbers.index(before: stringNumbers.endIndex)
+//								var numberAfter  = stringNumbers.index(after: stringNumbers.endIndex)
+//								//									print("test 3 :\(stringNumbers[numberBefore])")
+//								let numbersPriority2 = stringNumbers[i]
+//								var test3 = Int(numbersPriority2)
+//								var test4 = Int(indexOperators)
+//								print("position numbers \(numbersPriority2)")
+//								print("position operators\(indexOperators)")
+//								
+//							}
+//						
+//						}
+//					}
+//					
+//				}
+//		return true
+//
+//	}
+//		return true
+//		for (i, operators ) in operators.enumerated() {
+//			print("===============================")
+//			print("my operators\(i) \(operators)")
+//			print("===============================")
+//			while operators[i] ==
+//				for i in 0..<stringNumbers.count {
+//					let test = stringNumbers[i]
+//					print("\(test.index(after: $. ) )")
+//				}
+//		}
+//		for (j, stringNumber ) in stringNumbers.enumerated() {
+//
+//			print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+//			print("my stringNumbers\(j) \(operators)")
+//			print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+//		}
+//		return true
+//	}
+	
+	func multiplyAndDivision () {
+		let priorityOperators = "*/"
+		var result: Double = 0
+		var i = 0
+		while i < stringNumbers.count - 1{
+			if var firstNumber = Double(stringNumbers[i]) {
+				while priorityOperators.contains(operators[i+1]) {
+					if let secondNumber = Double(stringNumbers[i+1]) {
+						if operators[i+1] == "*" {
+							result = firstNumber * secondNumber
+						} else if operators[i+1] == "/" && secondNumber != 0 {
+							result = firstNumber / secondNumber
+						} else {
+							alertDelegateProtocol?.displayAlert(title: "Erreur", message: "La division par zéro est impossible.")
+						}
+						stringNumbers[i] = String(result)
+						firstNumber = result
+						stringNumbers.remove(at: i+1)
+						operators.remove(at: i+1)
+						if i == stringNumbers.count - 1 {
+							return
+						}
 					}
-					
 				}
-				totalToString = String(total)
+				i += 1
 			}
 		}
-		
-		return totalToString
+	}
+	
+	func calculateTotal() -> String {
+		if !isExpressionCorrect {
+			return "0"
+		}
+		var total:Double = 0
+		multiplyAndDivision()
+		for (i, stringNumber) in stringNumbers.enumerated() {
+			if let number = Double(stringNumber) {
+					if operators[i] == "+" {
+						total += number
+					} else if operators[i] == "-" {
+						total -= number
+					}
+			}
+		}
+		let result = String(format: "%.2f", total)
+		clear()
+		return result
 	}
 	
 	func addNewNumber(_ newNumber: Int)  -> String {
@@ -103,6 +156,7 @@ class Operations {
 		}
 		return String(newNumber)
 	}
+	
 	func updateDisplay() -> String {
 		var text = ""
 		for (i, stringNumber) in stringNumbers.enumerated() {
@@ -115,12 +169,10 @@ class Operations {
 		}
 		return text
 	}
-	
 	func clear(){
 		stringNumbers = [String()]
 		operators = ["+"]
 	}
-	
 	func plusActionButton() -> String {
 		if canAddOperator {
 			operators.append("+")
@@ -155,3 +207,39 @@ class Operations {
 
 
 
+//func calculateTotal() -> String {
+//	if !isExpressionCorrect {
+//		return "0"
+//	}
+//	var totalToString = ""
+//	var total = 0
+//	var totalToStringToDouble:Double = 0.0
+//	var numberToFloatNumber:Double = 0.0
+//
+//	for (i, stringNumber) in stringNumbers.enumerated() {
+//		if let number = Int(stringNumber) {
+//			if operators[i] == "+" {
+//				total += number
+//			} else if operators[i] == "-" {
+//				total -= number
+//			} else if operators[i] == "*" {
+//				if priorityCalculMultiply {
+//					total *= number
+//				}
+//				print("priority de calcul : \(priorityCalculMultiply)")
+//			} else if operators[i] == "/" {
+//				if !divisionByZero {
+//					return totalToString
+//				} else {
+//					totalToStringToDouble = Double(total)
+//					numberToFloatNumber = Double(number)
+//					totalToStringToDouble /= numberToFloatNumber
+//					totalToString = String(format: "%.2f", totalToStringToDouble)
+//					return totalToString
+//				}
+//			}
+//			totalToString = String(total)
+//		}
+//	}
+//	return totalToString
+//}

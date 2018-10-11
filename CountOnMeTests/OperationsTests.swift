@@ -85,14 +85,29 @@ class OperationsTests: XCTestCase {
 		// QUAND
 		let _ = operations.addNewNumber(10)
 		let _ = operations.divideActionButton()
-		let _ = operations.addNewNumber(2)
-		XCTAssert(operations.calculateTotal() == "5")
+		let _ = operations.addNewNumber(4)
+		XCTAssert(operations.calculateTotal() == "2.50")
+		//XCTAssert(operations.divisionByZero == true)
 	}
+	func testGivenTwoNumbersDividedByZero_WhenEqualButtonIspressed_ThenResulIsTheDivisionIsImpossible() {
+		// ETANT DONNÉ QUE
+		// QUAND
+		let _ = operations.addNewNumber(10)
+		let _ = operations.divideActionButton()
+		let _ = operations.addNewNumber(0)
+		//XCTAssert(operations.divisionByZero == false)
+	}
+//	func testDivisionByZeroIsIncorrrect() {
+//		let _ = operations.addNewNumber(10)
+//		let _ = operations.divideActionButton()
+//		let _ = operations.addNewNumber(0)
+//		XCTAssert(operations.divisionByZero == true)
+//	}
 // ajouter division par zero
-	func testGiventotalToStringIsEmpty_WhenIsNoCorrect_ThenTotalToStringIsAlwaysEmpty() {
-		let _ = operations.isExpressionCorrect == false
-		XCTAssert(operations.calculateTotal() == "")
-	}
+//	func testGiventotalToStringIsEmpty_WhenIsNoCorrect_ThenTotalToStringIsAlwaysEmpty() {
+//		let _ = operations.isExpressionCorrect == false
+//		XCTAssert(operations.calculateTotal() == "")
+//	}
 
 	func testGivenStringNumbersHasOneElement_WhenIsExpressionIsCorrect_ThenIsExpressionisRefused() {
 		operations.stringNumbers = ["0"]
@@ -138,16 +153,40 @@ class OperationsTests: XCTestCase {
 		let _ = operations.stringNumbers.count != 1
 		XCTAssert(operations.isExpressionCorrect == false)
 	}
-	func testIsExpressionIsCorrect2() {
-		//let _ = operations.stringNumbers.isEmpty == true
-		let _ = operations.stringNumbers.count == 1
-		XCTAssert(operations.isExpressionCorrect == false)
-	}
+//	func testIsExpressionIsCorrect2() {
+//		//let _ = operations.stringNumbers.isEmpty == true
+//		let _ = operations.stringNumbers.count == 1
+//		XCTAssert(operations.isExpressionCorrect == false)
+//	}
 	func testGivenStringNumbersHasAValue_WhenNumbersArePressed_ThenStringNumbersAppendNewNumber() {
 		operations.stringNumbers = ["1"]
 		let _ = operations.addNewNumber(1)
 		XCTAssert(operations.stringNumbers == ["11"])
 		
+	}
+	func testPriority() {
+		let _ = operations.addNewNumber(2)
+		let _ = operations.operators = ["+", "+"]
+		let _ = operations.addNewNumber(10)
+		let _ = operations.operators = ["+", "*"]
+		let _ = operations.addNewNumber(2)
+		XCTAssert(operations.calculateTotal() == "22")
+	}
+	func testPriority2() {
+		let _ = operations.addNewNumber(2)
+		let _ = operations.operators = ["+", "+"]
+		let _ = operations.addNewNumber(10)
+		let _ = operations.operators = ["+", "*"]
+		let _ = operations.addNewNumber(2)
+		XCTAssert(operations.calculateTotal() == "24")
+	}
+	func testPriority3 () {
+		let _ = operations.addNewNumber(2)
+		let _ = operations.operators = ["+", "+"]
+		let _ = operations.addNewNumber(10)
+		let _ = operations.operators = ["+", "*"]
+		let _ = operations.addNewNumber(2)
+		XCTAssert(operations.calculateTotal() == "22")
 	}
 }
 
