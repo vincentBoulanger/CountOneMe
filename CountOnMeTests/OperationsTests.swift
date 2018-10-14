@@ -61,7 +61,7 @@ class OperationsTests: XCTestCase {
 		let _ = operations.addNewNumber(2)
 		
 		// ALORS
-		XCTAssert(operations.calculateTotal() == "3")
+		XCTAssert(operations.calculateTotal() == "3.00")
 		
 	}
 	func testGivenTwoNumbersWithPlusOperand_WhenEqualButtonIspressed_ThenResultIsTheAddition() {
@@ -70,7 +70,7 @@ class OperationsTests: XCTestCase {
 		let _ = operations.addNewNumber(2)
 		let _ = operations.plusActionButton()
 		let _ = operations.addNewNumber(2)
-		XCTAssert(operations.calculateTotal() == "4")
+		XCTAssert(operations.calculateTotal() == "4.00")
 	}
 	func testGivenTwoNumbersWithMultiplyOperand_WhenEqualButtonIspressed_ThenResultIsTheMultiplication() {
 		// ETANT DONNÉ QUE
@@ -78,7 +78,7 @@ class OperationsTests: XCTestCase {
 		let _ = operations.addNewNumber(2)
 		let _ = operations.multiplyActionButton()
 		let _ = operations.addNewNumber(3)
-		XCTAssert(operations.calculateTotal() == "6")
+		XCTAssert(operations.calculateTotal() == "6.00")
 	}
 	func testGivenTwoNumbersWithDivideOperand_WhenEqualButtonIspressed_ThenResulIsTheDivision() {
 		// ETANT DONNÉ QUE
@@ -87,7 +87,6 @@ class OperationsTests: XCTestCase {
 		let _ = operations.divideActionButton()
 		let _ = operations.addNewNumber(4)
 		XCTAssert(operations.calculateTotal() == "2.50")
-		//XCTAssert(operations.divisionByZero == true)
 	}
 	func testGivenTwoNumbersDividedByZero_WhenEqualButtonIspressed_ThenResulIsTheDivisionIsImpossible() {
 		// ETANT DONNÉ QUE
@@ -97,17 +96,6 @@ class OperationsTests: XCTestCase {
 		let _ = operations.addNewNumber(0)
 		//XCTAssert(operations.divisionByZero == false)
 	}
-//	func testDivisionByZeroIsIncorrrect() {
-//		let _ = operations.addNewNumber(10)
-//		let _ = operations.divideActionButton()
-//		let _ = operations.addNewNumber(0)
-//		XCTAssert(operations.divisionByZero == true)
-//	}
-// ajouter division par zero
-//	func testGiventotalToStringIsEmpty_WhenIsNoCorrect_ThenTotalToStringIsAlwaysEmpty() {
-//		let _ = operations.isExpressionCorrect == false
-//		XCTAssert(operations.calculateTotal() == "")
-//	}
 
 	func testGivenStringNumbersHasOneElement_WhenIsExpressionIsCorrect_ThenIsExpressionisRefused() {
 		operations.stringNumbers = ["0"]
@@ -127,13 +115,25 @@ class OperationsTests: XCTestCase {
 	/////////////////////////////
 	// - MARK: clear
 	/////////////////////////////
-	func testGivenResultIsDisplayed_WhenClearIsPressed_ThenResetData () {
-		operations.stringNumbers = ["3", "2"]
-		operations.operators = ["+", "-"]
-		operations.clear()
-		XCTAssert(operations.stringNumbers == [String()])
-		XCTAssert(operations.operators == ["+"])
-		
+//	func testGivenResultIsDisplayed_WhenClearIsPressed_ThenResetData () {
+//		operations.stringNumbers = ["3", "2"]
+//		operations.operators = ["+", "-"]
+//		operations.clear()
+//		XCTAssert(operations.stringNumbers == [String()])
+//		XCTAssert(operations.operators == ["+"])
+//
+//	}
+	func testGivenCalculateTotal_expressionIsCorrect () {//@@@@@@@@@
+		let _ = operations.stringNumbers.last != nil
+		let _ = operations.stringNumbers.isEmpty == true
+		let _ = operations.stringNumbers.count != 1
+		XCTAssert(operations.isExpressionCorrect == false)
+		//
+	}
+	func testGivenCalculateTotal_expressionIsCorrect2 () {//@@@@@@@@@
+		let _ = operations.isExpressionCorrect == true
+		XCTAssert(operations.calculateTotal() != "0")
+		//
 	}
 	/////////////////////////////
 	// - MARK: updateDisplay
@@ -164,29 +164,29 @@ class OperationsTests: XCTestCase {
 		XCTAssert(operations.stringNumbers == ["11"])
 		
 	}
-	func testPriority() {
-		let _ = operations.addNewNumber(2)
-		let _ = operations.operators = ["+", "+"]
-		let _ = operations.addNewNumber(10)
-		let _ = operations.operators = ["+", "*"]
-		let _ = operations.addNewNumber(2)
-		XCTAssert(operations.calculateTotal() == "22")
-	}
-	func testPriority2() {
-		let _ = operations.addNewNumber(2)
-		let _ = operations.operators = ["+", "+"]
-		let _ = operations.addNewNumber(10)
-		let _ = operations.operators = ["+", "*"]
-		let _ = operations.addNewNumber(2)
-		XCTAssert(operations.calculateTotal() == "24")
-	}
-	func testPriority3 () {
-		let _ = operations.addNewNumber(2)
-		let _ = operations.operators = ["+", "+"]
-		let _ = operations.addNewNumber(10)
-		let _ = operations.operators = ["+", "*"]
-		let _ = operations.addNewNumber(2)
-		XCTAssert(operations.calculateTotal() == "22")
-	}
+//	func testPriority() {
+//		let _ = operations.addNewNumber(2)
+//		let _ = operations.operators = ["+", "+"]
+//		let _ = operations.addNewNumber(10)
+//		let _ = operations.operators = ["+", "*"]
+//		let _ = operations.addNewNumber(2)
+//		XCTAssert(operations.calculateTotal() == "22")
+//	}
+//	func testPriority2() {
+//		let _ = operations.addNewNumber(2)
+//		let _ = operations.operators = ["+", "+"]
+//		let _ = operations.addNewNumber(10)
+//		let _ = operations.operators = ["+", "*"]
+//		let _ = operations.addNewNumber(2)
+//		XCTAssert(operations.calculateTotal() == "24")
+//	}
+//	func testPriority3 () {
+//		let _ = operations.addNewNumber(2)
+//		let _ = operations.operators = ["+", "+"]
+//		let _ = operations.addNewNumber(10)
+//		let _ = operations.operators = ["+", "*"]
+//		let _ = operations.addNewNumber(2)
+//		XCTAssert(operations.calculateTotal() == "22")
+//	}
 }
 
