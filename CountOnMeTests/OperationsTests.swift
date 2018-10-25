@@ -91,12 +91,31 @@ class OperationsTests: XCTestCase {
 	func testGivenTwoNumbersDividedByZero_WhenEqualButtonIspressed_ThenResulIsTheDivisionIsImpossible() {
 		// ETANT DONNÉ QUE
 		// QUAND
-		let _ = operations.addNewNumber(10)
-		let _ = operations.divideActionButton()
+		let _ = operations.addNewNumber(50)
+		let _ = operations.multiplyAndDivision()
 		let _ = operations.addNewNumber(0)
-		//XCTAssert(operations.divisionByZero == false)
-	}
 
+	}
+//=====================
+	func testExpressionSsCorrect() {
+		XCTAssertEqual(operations.isExpressionCorrect, false)// ligne 17
+	}
+	//=====================
+	//=====================
+	func testExpressionSsCorrect2() {
+		let _ = operations.addNewNumber(1)
+		let _ = operations.plusActionButton()
+		let _ = operations.calculateTotal()
+		XCTAssertEqual(operations.isExpressionCorrect, false)
+	}
+	//=====================
+	//=====================
+	func testExpressionSsCorrect3() {
+		let _ = operations.addNewNumber(1)
+
+		XCTAssertEqual(operations.isExpressionCorrect, true)
+	}
+	//=====================
 	func testGivenStringNumbersHasOneElement_WhenIsExpressionIsCorrect_ThenIsExpressionisRefused() {
 		operations.stringNumbers = ["0"]
 		XCTAssert(operations.isExpressionCorrect == true)
@@ -115,26 +134,14 @@ class OperationsTests: XCTestCase {
 	/////////////////////////////
 	// - MARK: clear
 	/////////////////////////////
-//	func testGivenResultIsDisplayed_WhenClearIsPressed_ThenResetData () {
-//		operations.stringNumbers = ["3", "2"]
-//		operations.operators = ["+", "-"]
-//		operations.clear()
-//		XCTAssert(operations.stringNumbers == [String()])
-//		XCTAssert(operations.operators == ["+"])
-//
-//	}
 	func testGivenCalculateTotal_expressionIsCorrect () {//@@@@@@@@@
 		let _ = operations.stringNumbers.last != nil
 		let _ = operations.stringNumbers.isEmpty == true
-		let _ = operations.stringNumbers.count != 1
+		let _ = operations.stringNumbers.count == 2
 		XCTAssert(operations.isExpressionCorrect == false)
-		//
+		//XCTAssert(operations.trueTest ==  0)
 	}
-	func testGivenCalculateTotal_expressionIsCorrect2 () {//@@@@@@@@@
-		let _ = operations.isExpressionCorrect == true
-		XCTAssert(operations.calculateTotal() != "0")
-		//
-	}
+
 	/////////////////////////////
 	// - MARK: updateDisplay
 	/////////////////////////////
@@ -148,45 +155,24 @@ class OperationsTests: XCTestCase {
 		XCTAssert(operations.updateDisplay() == "0")
 	}
 
-	func testIsExpressionIsCorrect() {
-//		let _ = operations.stringNumbers.isEmpty == true
-		let _ = operations.stringNumbers.count != 1
-		XCTAssert(operations.isExpressionCorrect == false)
-	}
-//	func testIsExpressionIsCorrect2() {
-//		//let _ = operations.stringNumbers.isEmpty == true
-//		let _ = operations.stringNumbers.count == 1
-//		XCTAssert(operations.isExpressionCorrect == false)
-//	}
 	func testGivenStringNumbersHasAValue_WhenNumbersArePressed_ThenStringNumbersAppendNewNumber() {
 		operations.stringNumbers = ["1"]
 		let _ = operations.addNewNumber(1)
 		XCTAssert(operations.stringNumbers == ["11"])
 		
 	}
-//	func testPriority() {
-//		let _ = operations.addNewNumber(2)
-//		let _ = operations.operators = ["+", "+"]
-//		let _ = operations.addNewNumber(10)
-//		let _ = operations.operators = ["+", "*"]
-//		let _ = operations.addNewNumber(2)
-//		XCTAssert(operations.calculateTotal() == "22")
-//	}
-//	func testPriority2() {
-//		let _ = operations.addNewNumber(2)
-//		let _ = operations.operators = ["+", "+"]
-//		let _ = operations.addNewNumber(10)
-//		let _ = operations.operators = ["+", "*"]
-//		let _ = operations.addNewNumber(2)
-//		XCTAssert(operations.calculateTotal() == "24")
-//	}
-//	func testPriority3 () {
-//		let _ = operations.addNewNumber(2)
-//		let _ = operations.operators = ["+", "+"]
-//		let _ = operations.addNewNumber(10)
-//		let _ = operations.operators = ["+", "*"]
-//		let _ = operations.addNewNumber(2)
-//		XCTAssert(operations.calculateTotal() == "22")
+	func testGivenExoressionIscorrectIsFalse_WhenOperatorsIsPressed_ThenResultIsStringZero () {
+		let _ = operations.isExpressionCorrect == false
+		XCTAssert(operations.calculateTotal() == "0")
+		
+	}
+//	func testGivenExoression2 () {
+//		let _ = operations.
+//		let _ = operations.canAddOperator == true
+//		let _ = operations.isExpressionCorrect == true
+//		let _ = operations.operators == ["*"]
+//		XCTAssert(operations.stringNumbers == "/")
+//		
 //	}
 }
 

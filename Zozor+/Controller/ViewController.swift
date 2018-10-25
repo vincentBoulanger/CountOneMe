@@ -22,6 +22,7 @@ class ViewController: UIViewController {
             }
         }
     }
+	//
 	@IBAction func operationButtonTapped(_ sender: UIButton) {
 		switch sender.title(for: .normal) {
 			case "+":
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
     // MARK: - Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		operations.alertDelegateProtocol = self // 4 implementation du protocol au sein de la classe dans laquelle on a écrit la ligne. On vient de delguer au controleur
+		operations.alertDelegateProtocol = self // 4 implementation du protocol au sein de la classe dans laquelle on a écrit la ligne. On vient de deleguer au controleur
 		
 	}
 }

@@ -16,7 +16,7 @@ class Operations {
 		if let stringNumber = stringNumbers.last {
 			if stringNumber.isEmpty {
 				if stringNumbers.count == 1 {
-					alertDelegateProtocol?.displayAlert(title: "Zéro!", message: "démarrez un nouveau Calcul")
+					alertDelegateProtocol?.displayAlert(title: "Zéro!", message: "Démarrez un nouveau Calcul")
 				} else {
 					alertDelegateProtocol?.displayAlert(title: "Zéro!", message: "Entrez une expression correcte !")
 				}
@@ -34,71 +34,8 @@ class Operations {
 		}
 		return true
 	}
-//	var divisionByZero: Bool {
-//		if stringNumbers.last != nil{
-//			if operators.last == "/" {
-//				if stringNumbers.last == "0" {
-//					alertDelegateProtocol?.displayAlert(title: "Erreur", message: "La division par zéro est impossible.")
-//					return false
-//				}
-//			}
-//		}
-//		return true
-//	}
-	
-//	var priorityCalculMultiply: Bool {
-//		var numbersMultiply = [String]()
-//		var numberAfter = ""
-////		var numberBefore = ""
-////		if stringNumbers.last != nil {
-//			//	var test = operators.index(after: -1)
-//				for i in 0..<operators.count {
-//					let indexOperators = operators[i]
-//					if indexOperators == "*"  {
-//						for i in 0..<stringNumbers.count {
-//							let numbersPriority = stringNumbers[i]
-//							//var numbersPriorityToInt =
-//							if Int(numbersPriority) != nil {
-//								//if numbersPriorityToInt! >= 1 {
-//								//let myTest = stringNumbers[i-1]
-//								var numberBefore = stringNumbers.index(before: stringNumbers.endIndex)
-//								var numberAfter  = stringNumbers.index(after: stringNumbers.endIndex)
-//								//									print("test 3 :\(stringNumbers[numberBefore])")
-//								let numbersPriority2 = stringNumbers[i]
-//								var test3 = Int(numbersPriority2)
-//								var test4 = Int(indexOperators)
-//								print("position numbers \(numbersPriority2)")
-//								print("position operators\(indexOperators)")
-//								
-//							}
-//						
-//						}
-//					}
-//					
-//				}
-//		return true
-//
-//	}
-//		return true
-//		for (i, operators ) in operators.enumerated() {
-//			print("===============================")
-//			print("my operators\(i) \(operators)")
-//			print("===============================")
-//			while operators[i] ==
-//				for i in 0..<stringNumbers.count {
-//					let test = stringNumbers[i]
-//					print("\(test.index(after: $. ) )")
-//				}
-//		}
-//		for (j, stringNumber ) in stringNumbers.enumerated() {
-//
-//			print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-//			print("my stringNumbers\(j) \(operators)")
-//			print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-//		}
-//		return true
-//	}
-	
+
+	// func for the multiplication and the division and management of calculation 's priority
 	func multiplyAndDivision () {
 		let priorityOperators = "*/"
 		var result: Double = 0
@@ -127,7 +64,7 @@ class Operations {
 			}
 		}
 	}
-	
+	// func to execution of operations and addition of a format with two decimal places
 	func calculateTotal() -> String {
 		if !isExpressionCorrect {
 			return "0"
@@ -147,7 +84,7 @@ class Operations {
 		clear()
 		return result
 	}
-	
+	// 
 	func addNewNumber(_ newNumber: Int)  -> String {
 		if let stringNumber = stringNumbers.last {
 			var stringNumberMutable = stringNumber
@@ -243,3 +180,67 @@ class Operations {
 //	}
 //	return totalToString
 //}
+//	var divisionByZero: Bool {
+//		if stringNumbers.last != nil{
+//			if operators.last == "/" {
+//				if stringNumbers.last == "0" {
+//					alertDelegateProtocol?.displayAlert(title: "Erreur", message: "La division par zéro est impossible.")
+//					return false
+//				}
+//			}
+//		}
+//		return true
+//	}
+
+//	var priorityCalculMultiply: Bool {
+//		var numbersMultiply = [String]()
+//		var numberAfter = ""
+////		var numberBefore = ""
+////		if stringNumbers.last != nil {
+//			//	var test = operators.index(after: -1)
+//				for i in 0..<operators.count {
+//					let indexOperators = operators[i]
+//					if indexOperators == "*"  {
+//						for i in 0..<stringNumbers.count {
+//							let numbersPriority = stringNumbers[i]
+//							//var numbersPriorityToInt =
+//							if Int(numbersPriority) != nil {
+//								//if numbersPriorityToInt! >= 1 {
+//								//let myTest = stringNumbers[i-1]
+//								var numberBefore = stringNumbers.index(before: stringNumbers.endIndex)
+//								var numberAfter  = stringNumbers.index(after: stringNumbers.endIndex)
+//								//									print("test 3 :\(stringNumbers[numberBefore])")
+//								let numbersPriority2 = stringNumbers[i]
+//								var test3 = Int(numbersPriority2)
+//								var test4 = Int(indexOperators)
+//								print("position numbers \(numbersPriority2)")
+//								print("position operators\(indexOperators)")
+//
+//							}
+//
+//						}
+//					}
+//
+//				}
+//		return true
+//
+//	}
+//		return true
+//		for (i, operators ) in operators.enumerated() {
+//			print("===============================")
+//			print("my operators\(i) \(operators)")
+//			print("===============================")
+//			while operators[i] ==
+//				for i in 0..<stringNumbers.count {
+//					let test = stringNumbers[i]
+//					print("\(test.index(after: $. ) )")
+//				}
+//		}
+//		for (j, stringNumber ) in stringNumbers.enumerated() {
+//
+//			print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+//			print("my stringNumbers\(j) \(operators)")
+//			print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+//		}
+//		return true
+//	}
